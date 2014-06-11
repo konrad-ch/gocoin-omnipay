@@ -28,9 +28,9 @@ class AuthorizeRequest extends AbstractRequest
         return $data;
     }
 
-    public function sendData($data)
+    public function sendData($data, $send = true)
     {
-        $httpResponse = $this->sendRequest('POST', "/oauth/token", $data);
+        $httpResponse = $this->sendRequest('POST', "/oauth/token", $data, $send);
 //var_dump($httpResponse);
 //var_dump($httpResponse -> getBody() -> __toString());
         return $this->response = new AuthorizeResponse($this, $httpResponse);

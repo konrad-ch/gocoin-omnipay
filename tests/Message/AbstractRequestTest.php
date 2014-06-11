@@ -12,4 +12,9 @@ class AbstractRequestTest extends TestCase
         $this->request = m::mock('\Omnipay\GoCoin\Message\AbstractRequest')->makePartial();
         $this->request->initialize();
     }
+
+    public function testDoNothing()
+    {
+        //make phpunit happy
+    }
 }

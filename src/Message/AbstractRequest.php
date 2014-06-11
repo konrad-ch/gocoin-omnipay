@@ -18,7 +18,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function setMerchantId($value)
     {
-        return $this->setParameter('merchantId', $value);
+        $this->setParameter('merchantId', $value);
     }
 
     public function getInvoiceId()
@@ -28,7 +28,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function setInvoiceId($value)
     {
-        return $this->setParameter('invoiceId', $value);
+        $this->setParameter('invoiceId', $value);
     }
 
     public function getCode()
@@ -38,7 +38,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function setCode($value)
     {
-        return $this->setParameter('code', $value);
+        $this->setParameter('code', $value);
     }
 
     public function getClientId()
@@ -48,7 +48,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function setClientId($value)
     {
-        return $this->setParameter('clientId', $value);
+        $this->setParameter('clientId', $value);
     }
 
     public function getClientSecret()
@@ -58,7 +58,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function setClientSecret($value)
     {
-        return $this->setParameter('clientSecret', $value);
+        $this->setParameter('clientSecret', $value);
     }
 
     #     #  #######  ######   #     #  #######  #######  #    #   #####
@@ -76,7 +76,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function setRedirectUri($value)
     {
-        return $this->setParameter('redirectUri', $value);
+        $this->setParameter('redirectUri', $value);
     }
 
     public function getCallbackUri()
@@ -104,7 +104,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function setNotificationLevel($value)
     {
-        return $this->setParameter('notificationLevel', $value);
+        $this->setParameter('notificationLevel', $value);
     }
 
     public function getPriceCurrency()
@@ -114,7 +114,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function setPriceCurrency($value)
     {
-        return $this->setParameter('priceCurrency', $value);
+        $this->setParameter('priceCurrency', $value);
     }
 
     public function getConfirmationsRequired()
@@ -407,6 +407,11 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $this->setParameter('userDefined8', $value);
     }
 
+    public function setParam($name, $value)
+    {
+        $this->setParameter($name, $value);
+    }
+
     public function addParameter($data, $param_key, $data_key, $default = null)
     {
         if (empty($data)) {
@@ -415,8 +420,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         //dynamically construct the method name, per naming conventions
         $method = 'get' . strtoupper(substr($param_key, 0, 1)) . substr($param_key, 1);
         //check the method first
-        if (method_exists($this, $method) && !empty($this -> $method)) {
-            $data[$data_key] = $this -> $method;
+        if (method_exists($this, $method) && !empty($this -> $method())) {
+            $data[$data_key] = $this -> $method();
         } elseif (!empty($this->getParameter($param_key))) {
             //make a call to the underlying parameters next
             $data[$data_key] = $this->getParameter($param_key);
@@ -428,8 +433,9 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $data;
     }
 
-    public function sendRequest($method, $action, $data = null)
+    public function sendRequest($method, $action, $data = null, $send = true)
     {
+/*
         if ($action == '/auth') {
             if ($this -> getTestMode()) {
                 $endpoint = Gateway::TEST_DASHBOARD;
@@ -437,12 +443,15 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
                 $endpoint = Gateway::PROD_DASHBOARD;
             }
         } else {
-            if ($this -> getTestMode()) {
-                $endpoint = Gateway::TEST_ENDPOINT;
-            } else {
-                $endpoint = Gateway::PROD_ENDPOINT;
-            }
+*/
+        if ($this -> getTestMode()) {
+            $endpoint = Gateway::TEST_ENDPOINT;
+        } else {
+            $endpoint = Gateway::PROD_ENDPOINT;
         }
+/*
+        }
+*/
 
         //the url is a combination of the endpoint and the action
         $url = $endpoint . $action;
@@ -478,6 +487,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         //die("STOPPING BEFORE REQUEST SEND");
 
         //send the request
-        return $httpRequest->send();
+        if ($send) {
+            return $httpRequest->send();
+        } else {
+            return null;
+        }
     }
 }

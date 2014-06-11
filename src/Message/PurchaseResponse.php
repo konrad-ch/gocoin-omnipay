@@ -17,14 +17,20 @@ class PurchaseResponse extends Response implements ResponseInterface
 
     public function isSuccessful()
     {
+        if (empty(parent::getData())) {
+            return false;
+        }
         return parent::getData() -> getStatusCode() == 201;
     }
 
     public function getTransactionReference()
     {
-        $json = $this -> getData();
-        if (isset($json['id'])) {
-            return $json['id'];
+        if (!empty(parent::getData())) {
+            $json = $this -> getData();
+            if (isset($json['id'])) {
+                return $json['id'];
+            }
         }
+        return null;
     }
 }

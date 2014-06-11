@@ -13,11 +13,17 @@ class AuthorizeResponse extends Response implements ResponseInterface
 {
     public function getData()
     {
+        if (empty(parent::getData())) {
+            return null;
+        }
         return parent::getData() -> json();
     }
 
     public function isSuccessful()
     {
+        if (empty($this -> getData())) {
+            return false;
+        }
         return parent::getData() -> getStatusCode() == 200;
     }
 

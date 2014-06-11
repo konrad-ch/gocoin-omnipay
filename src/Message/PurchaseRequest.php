@@ -9,7 +9,7 @@ namespace Omnipay\GoCoin\Message;
  */
 class PurchaseRequest extends AbstractRequest
 {
-    public function getData()
+    public function getData($send = true, $mockResponse = null)
     {
         $this->validate('token', 'amount', 'currency');
 
@@ -17,10 +17,15 @@ class PurchaseRequest extends AbstractRequest
 
         //automatically lookup the merchant id
         if (empty($merchantId)) {
-            $httpResponse = $this -> sendRequest('GET', "/user");
-            $json = $httpResponse -> json();
-            $merchantId = $json['merchant_id'];
-            $this -> setMerchantId($merchantId);
+            $httpResponse = $this -> sendRequest('GET', "/user", null, $send);
+            if (empty($httpResponse)) {
+                $httpResponse = $mockResponse;
+            }
+            if (!empty($httpResponse)) {
+                $json = $httpResponse -> json();
+                $merchantId = $json['merchant_id'];
+                $this -> setMerchantId($merchantId);
+            }
         }
 
         $data = array();
@@ -64,9 +69,9 @@ class PurchaseRequest extends AbstractRequest
         return $data;
     }
 
-    public function sendData($data)
+    public function sendData($data, $send = true)
     {
-        $httpResponse = $this->sendRequest('POST', "/merchants/{$this -> getMerchantId()}/invoices", $data);
+        $httpResponse = $this->sendRequest('POST', "/merchants/{$this -> getMerchantId()}/invoices", $data, $send);
         return $this->response = new PurchaseResponse($this, $httpResponse);
     }
 }

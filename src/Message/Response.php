@@ -11,8 +11,12 @@ class Response extends AbstractResponse
 {
     public function isSuccessful()
     {
-        return $this -> getData() -> getStatusCode() >= 200 &&
-          $this -> getData() -> getStatusCode() < 400;
+        $data = $this -> getData();
+        if (empty($data)) {
+            return false;
+        }
+        return $data -> getStatusCode() >= 200 &&
+          $data -> getStatusCode() < 400;
     }
 
 /*

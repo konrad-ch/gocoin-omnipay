@@ -12,11 +12,10 @@ class GatewayTest extends GatewayTestCase
 
         $this -> gateway = new Gateway($this -> getHttpClient(), $this -> getHttpRequest());
     }
-/*
+
     public function testPurchase()
     {
         $request = $this -> gateway -> purchase(array('amount' => '10.00'));
-
         $this -> assertInstanceOf('Omnipay\GoCoin\Message\PurchaseRequest', $request);
         $this -> assertSame('10.00', $request -> getAmount());
     }
@@ -24,9 +23,7 @@ class GatewayTest extends GatewayTestCase
     public function testStatusRequest()
     {
         $request = $this -> gateway -> status(array('invoiceId' => 'abc123'));
-
-        $this -> assertInstanceOf('Omnipay\GoCoin\Message\FetchTransactionRequest', $request);
-        $this -> assertSame('abc123', $request -> getTransactionReference());
+        $this -> assertInstanceOf('Omnipay\GoCoin\Message\StatusRequest', $request);
+        $this -> assertSame('abc123', $request -> getInvoiceId());
     }
-*/
 }

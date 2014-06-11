@@ -1,0 +1,7 @@
+{
+  "price_currency": "BTC",
+  "base_price": "123.00",
+  "confirmations_required": 6,
+  "notification_level": "all",
+  "base_price_currency": "USD"
+}

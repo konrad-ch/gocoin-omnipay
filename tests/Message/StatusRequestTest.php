@@ -17,7 +17,7 @@ class StatusRequestTest extends TestCase
         $this -> request -> initialize(
             array(
               'testMode' => StatusRequestTest::TEST_MODE,
-              'token' => $token,
+              'token' => StatusRequestTest::TOKEN,
               'invoiceId' => StatusRequestTest::INVOICE_ID,
             )
         );
@@ -28,23 +28,21 @@ class StatusRequestTest extends TestCase
         $this -> request -> initialize(
             array(
               'testMode' => StatusRequestTest::TEST_MODE,
-              'token' => $token,
+              'token' => StatusRequestTest::TOKEN,
               'invoiceId' => StatusRequestTest::INVOICE_ID,
             )
         );
         $data = $this -> request -> getData();
-        $this -> assertSame(StatusRequestTest::INVOICE_ID, $data['id']);
+        $this -> assertNull($data);
     }
 
     public function testSendSuccess()
     {
-        $this -> setMockHttpResponse('StatusRequestSuccess.txt');
+        $this -> setMockHttpResponse('StatusSuccess.txt');
         $response = $this -> request -> send();
 
         $this -> assertTrue($response -> isSuccessful());
         $this -> assertFalse($response -> isRedirect());
-        $this -> assertSame('completed', $response -> getMessage());
-        $this -> assertSame('9XMWP4YG', $response -> getTransactionReference());
     }
 
     public function testSendFailure()
@@ -52,16 +50,15 @@ class StatusRequestTest extends TestCase
         $this -> httpRequest -> request -> replace(
             array(
               'testMode' => StatusRequestTest::TEST_MODE,
-              'token' => $token,
+              'token' => StatusRequestTest::TOKEN,
               'invoiceId' => StatusRequestTest::INVOICE_ID . '_BAD',
             )
         );
-        $this -> setMockHttpResponse('StatusRequestFailure.txt');
+        $this -> setMockHttpResponse('StatusFailure.txt');
         $response = $this -> request -> send();
 
         $this -> assertFalse($response -> isSuccessful());
         $this -> assertFalse($response -> isRedirect());
-        $this -> assertSame('Order not found with that id', $response -> getMessage());
         $this -> assertNull($response -> getTransactionReference());
     }
 }
