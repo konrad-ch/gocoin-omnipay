@@ -1,29 +1,29 @@
 {
-    "name": "omnipay/coinbase",
+    "name": "omnipay/gocoin",
     "type": "library",
-    "description": "Coinbase driver for the Omnipay payment processing library",
+    "description": "GoCoin driver for the Omnipay payment processing library",
     "keywords": [
-        "coinbase",
+        "gocoin",
         "gateway",
         "merchant",
         "omnipay",
         "pay",
         "payment"
     ],
-    "homepage": "https://github.com/omnipay/coinbase",
+    "homepage": "https://bitbucket.org/labellaw/omnipay",
     "license": "MIT",
     "authors": [
         {
-            "name": "Adrian Macneil",
-            "email": "adrian@adrianmacneil.com"
+            "name": "Aaron LaBella",
+            "email": "aaronlabella@gmail.com"
         },
         {
             "name": "Omnipay Contributors",
-            "homepage": "https://github.com/omnipay/coinbase/contributors"
+            "homepage": "https://github.com/omnipay/gocoin/contributors"
         }
     ],
     "autoload": {
-        "psr-4": { "Omnipay\\Coinbase\\" : "src/" }
+        "psr-4": { "Omnipay\\GoCoin\\" : "src/" }
     },
     "require": {
         "omnipay/common": "~2.0"

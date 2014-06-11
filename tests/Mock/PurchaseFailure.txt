@@ -4,7 +4,7 @@ Date: Sun, 11 May 2014 21:16:47 GMT
 Content-Type: application/json; charset=utf-8
 Transfer-Encoding: chunked
 Connection: keep-alive
-Set-Cookie: __cfduid=d7dcdb1d9bcf6956196803df5114745281399843007383; expires=Mon, 23-Dec-2019 23:50:00 GMT; path=/; domain=.coinbase.com; HttpOnly, request_method=POST; path=/; secure
+Set-Cookie: __cfduid=d7dcdb1d9bcf6956196803df5114745281399843007383; expires=Mon, 23-Dec-2019 23:50:00 GMT; path=/; domain=.gocoin.com; HttpOnly, request_method=POST; path=/; secure
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Etag: "11a8b7215eb13fb4b06266ac86b7bbf6"
 Expires: -1

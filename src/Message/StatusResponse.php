@@ -6,9 +6,9 @@ use Omnipay\GoCoin\Message\Response;
 use Omnipay\Common\Message\ResponseInterface;
 
 /**
- * GoCoin Purchase Response
+ * GoCoin Status Response
  */
-class PurchaseResponse extends Response implements ResponseInterface
+class StatusResponse extends Response implements ResponseInterface
 {
     public function getData()
     {
@@ -17,7 +17,7 @@ class PurchaseResponse extends Response implements ResponseInterface
 
     public function isSuccessful()
     {
-        return parent::getData() -> getStatusCode() == 201;
+        return parent::getData() -> getStatusCode() == 200;
     }
 
     public function getTransactionReference()
