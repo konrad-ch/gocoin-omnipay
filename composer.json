@@ -10,16 +10,16 @@
         "pay",
         "payment"
     ],
-    "homepage": "https://bitbucket.org/labellaw/omnipay",
+    "homepage": "https://github.com/GoCoin/gocoin-omnipay",
     "license": "MIT",
     "authors": [
         {
-            "name": "Aaron LaBella",
-            "email": "aaronlabella@gmail.com"
+            "name": "Kevin Beauregard",
+            "email": "kevin@gocoin.com"
         },
         {
-            "name": "Omnipay Contributors",
-            "homepage": "https://github.com/omnipay/gocoin/contributors"
+            "name": "GoCoin Omnipay Contributors",
+            "homepage": "https://github.com/GoCoin/gocoin-omnipay/graphs/contributors"
         }
     ],
     "autoload": {

@@ -1,7 +1,5 @@
 # Omnipay: GoCoin
 
-# phpcs --standard=PSR2 src && phpunit --coverage-text
-
 **GoCoin driver for the Omnipay PHP payment processing library**
 
 [![Build Status](https://travis-ci.org/omnipay/gocoin.png?branch=master)](https://travis-ci.org/omnipay/gocoin)
@@ -19,7 +17,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "omnipay/gocoin": "~2.0"
+        "omnipay/gocoin": "~1.0"
     }
 }
 ```
@@ -49,4 +47,3 @@ or ask more detailed questions, there is also a [mailing list](https://groups.go
 
 If you believe you have found a bug, please report it using the [GitHub issue tracker](https://github.com/omnipay/gocoin/issues),
 or better yet, fork the library and submit a pull request.
->>>>>>> bfff01e... Initial commit
