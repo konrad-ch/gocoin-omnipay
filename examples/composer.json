@@ -11,7 +11,7 @@
     "require": {
         "omnipay/coinbase": "~2.0",
         "omnipay/common": "~2.3.0",
-        "omnipay/gocoin": "~1.0.0"
+        "omnipay/gocoin": "~1.0.1"
     },
     "require-dev": {
         "omnipay/tests": "~2.0"
