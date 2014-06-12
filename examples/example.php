@@ -2,18 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('xdebug.var_display_max_depth', '10');
 
-include_once '../../autoload.php';
-/*
-include_once 'gocoin/src/Gateway.php';
-include_once 'gocoin/src/Message/Response.php';
-include_once 'gocoin/src/Message/AbstractRequest.php';
-include_once 'gocoin/src/Message/AuthorizeRequest.php';
-include_once 'gocoin/src/Message/AuthorizeResponse.php';
-include_once 'gocoin/src/Message/PurchaseRequest.php';
-include_once 'gocoin/src/Message/PurchaseResponse.php';
-include_once 'gocoin/src/Message/StatusRequest.php';
-include_once 'gocoin/src/Message/StatusResponse.php';
-*/
+include_once '../../../autoload.php';
 
 use Omnipay\Omnipay;
 

@@ -36,6 +36,13 @@ The following gateways are provided by this package:
 For general usage instructions, please see the main [Omnipay](https://github.com/omnipay/omnipay)
 repository.
 
+## Examples
+
+There is an example PHP script in examples/example.php to show how to authenticate
+with GoCoin and retrieve a token, as well as $gateway -> status (get an invoice) and
+$gateway -> purchse (create an invoice).  Additionally, there is some sample code
+to show how to use GoCoin webhooks.
+
 ## Support
 
 If you are having general issues with Omnipay, we suggest posting on

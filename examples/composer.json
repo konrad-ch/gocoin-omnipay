@@ -1,0 +1,24 @@
+{
+    "name": "example/project",
+    "type": "metapackage",
+    "description": "Example project",
+    "repositories": [
+        {
+          "type":"vcs",
+          "url":"https://github.com/GoCoin/gocoin-omnipay"
+        }
+    ],
+    "require": {
+        "omnipay/coinbase": "~2.0",
+        "omnipay/common": "~2.3.0",
+        "omnipay/gocoin": "~1.0.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}
