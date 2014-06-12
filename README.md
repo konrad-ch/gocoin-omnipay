@@ -43,6 +43,10 @@ with GoCoin and retrieve a token, as well as $gateway -> status (get an invoice)
 $gateway -> purchse (create an invoice).  Additionally, there is some sample code
 to show how to use GoCoin webhooks.
 
+To use it, simply set your client id and secret (or set the token to avoid authentication).
+Then, set the invoice id to look one up or remove the 'die' method call around line
+~97 to make a purchase.
+
 ## Support
 
 If you are having general issues with Omnipay, we suggest posting on
