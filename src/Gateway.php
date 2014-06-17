@@ -12,12 +12,8 @@ use Omnipay\Common\AbstractGateway;
  */
 class Gateway extends AbstractGateway
 {
-    const PROD_ENDPOINT = 'https://api.gocoin.com/api/v1';
-    const TEST_ENDPOINT = 'https://api.llamacoin.com/api/v1';
-    const MOCK_ENDPOINT = 'https://gocoinapi.apiary-mock.com';
-
-    const PROD_DASHBOARD = 'https://dashboard.gocoin.com';
-    const TEST_DASHBOARD = 'https://dashboard.llamacoin.com';
+    const ENDPOINT  = 'https://api.gocoin.com/api/v1';
+    const DASHBOARD = 'https://dashboard.gocoin.com';
 
     public function getName()
     {
@@ -57,11 +53,7 @@ class Gateway extends AbstractGateway
 
     public function getAuthCodeUrl(array $parameters = array())
     {
-        if (array_key_exists('testMode', $parameters) && $parameters['testMode']) {
-            $endpoint = Gateway::TEST_DASHBOARD;
-        } else {
-            $endpoint = Gateway::PROD_DASHBOARD;
-        }
+        $endpoint = Gateway::DASHBOARD;
         $data['response_type'] = 'code';
         $data['client_id'] = $parameters['clientId'];
         $data['redirect_uri'] = $parameters['redirectUri'];

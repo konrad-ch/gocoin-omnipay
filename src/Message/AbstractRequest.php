@@ -435,23 +435,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function sendRequest($method, $action, $data = null, $send = true)
     {
-/*
-        if ($action == '/auth') {
-            if ($this -> getTestMode()) {
-                $endpoint = Gateway::TEST_DASHBOARD;
-            } else {
-                $endpoint = Gateway::PROD_DASHBOARD;
-            }
-        } else {
-*/
-        if ($this -> getTestMode()) {
-            $endpoint = Gateway::TEST_ENDPOINT;
-        } else {
-            $endpoint = Gateway::PROD_ENDPOINT;
-        }
-/*
-        }
-*/
+        $endpoint = Gateway::ENDPOINT;
 
         //the url is a combination of the endpoint and the action
         $url = $endpoint . $action;

@@ -83,12 +83,5 @@ class AuthorizeRequestTest extends TestCase
           $url,
           'https://dashboard.gocoin.com/auth?response_type=code&client_id=clientId&redirect_uri=redirectUri&scope=user_read+invoice_read_write'
         );
-        $params['testMode'] = !(AuthorizeRequestTest::TEST_MODE);
-        //get the auth code url
-        $url = $gateway -> getAuthCodeUrl($params);
-        $this -> assertSame(
-          $url,
-          'https://dashboard.llamacoin.com/auth?response_type=code&client_id=clientId&redirect_uri=redirectUri&scope=user_read+invoice_read_write'
-        );
     }
 }
