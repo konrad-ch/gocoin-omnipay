@@ -33,4 +33,14 @@ class PurchaseResponse extends Response implements ResponseInterface
         }
         return null;
     }
+
+    public function getRedirectUrl()
+    {
+        if (empty(parent::getData()))
+            return null;
+        $json = $this->getData();
+        if (isset($json["gateway_url"]))
+            return $json["gateway_url"];
+        return null;
+    }
 }
